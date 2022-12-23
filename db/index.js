@@ -32,3 +32,8 @@ module.exports.getBannedUsers = async function() {
     let query = 'SELECT userid FROM users WHERE banned';
     return await config.pquery(query, []);
 }
+
+module.exports.addCosmetic = async function(userid, category, cosmetic_id) {
+    let query = 'INSERT INTO cosmetics (userid, category, cosmetic_id) VALUES ($1, $2, $3)';
+    return await config.pquery(query, [userid, category, cosmetic_id]);
+}
